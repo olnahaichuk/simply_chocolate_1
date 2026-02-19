@@ -1,7 +1,21 @@
 /*======= Common Styles =======*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 /*Маркери у списках */
 ul,
 ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
   list-style-type: none;
 }
 /*Нижнє підкреслення в посиланнях */
@@ -22,12 +36,34 @@ body {
   color: #111;
   background: #fafafa;
 }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 /*======= /Common Styles =======*/
 /*======= Page Header Styles =======*/
-.page-header {
-  padding: 28px 32px;
-  display: flex;
+.container {
+  width: 1168px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: auto;
+  margin-right: auto;
 }
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .logo {
   font-weight: 700;
   font-size: 18px;
@@ -37,11 +73,21 @@ body {
 .text-italic {
   font-style: italic;
 }
+.menu {
+  display: flex;
+  column-gap: 24px;
+}
 .menu-link {
+  display: block;
+  padding-top: 32px;
+  padding-bottom: 32px;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: -0.02em;
+}
+.menu-link.active {
+  color: #fd9222;
 }
 .menu-link:hover,
 .menu-link:focus {
@@ -50,34 +96,77 @@ body {
 /*======= /Page Header Styles =======*/
 
 /*======= Page Hero Styles =======*/
-.hero {
-  background-color: brown; /* fix */
-  color: #fff;
+
+.hero-container {
+  padding-top: 381px;
+  padding-bottom: 40px;
+  padding-left: 56px;
+  padding-right: 56px;
+  background-color: brown;
 }
 .hero-title {
+  max-width: 462px;
   font-weight: 500;
   font-size: 28px;
   line-height: 1.21;
   letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 32px;
+}
+.hero-bottom {
+  display: flex;
+  align-items: center;
 }
 .buy-now-btn {
+  min-width: 144px;
+  height: 45px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border: none;
+  border-radius: 100px;
   font-weight: 600;
   font-size: 14px;
   color: #fff;
   background-color: #fd9222;
+  margin-right: 14px;
 }
 .how-its-made {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid #fff;
+  border-radius: 100px;
+  min-width: 183px;
+  height: 45px;
   font-weight: 600;
   font-size: 14px;
+  color: #fff;
+  margin-right: auto;
+}
+.scroll {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+.scroll:hover,
+.scroll:focus {
+  color: #fd9222;
 }
 /*======= /Page Hero Styles =======*/
 
 /*======= Benefits Styles =======*/
+
 .benefits {
   background-color: #1e1823;
-}
-.title-benefits {
-  display: none;
+  margin-top: 72px;
+  margin-bottom: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 .benefits-item-title {
   font-weight: 600;
@@ -89,26 +178,47 @@ body {
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, 0.7);
 }
+.benefits-list {
+  display: flex;
+  gap: 88px;
+}
+.benefits-item {
+  width: calc((100% - 2 * 88px) / 3);
+}
 /*======= /Benefits Styles =======*/
 
 /*======= Ingredients Styles =======*/
 .ingredients {
   text-align: center;
+  padding-top: 50px;
+  margin-bottom: 50px;
 }
 .section-title {
+  max-width: 411px;
+  margin-left: auto;
+  margin-right: auto;
   font-weight: 600;
   font-size: 24px;
   line-height: 1.17;
   letter-spacing: -0.03em;
   text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.ingredients-section-title {
+  margin-bottom: 28px;
 }
 .text-color {
   color: #fd9222;
 }
 .ingredients-description {
+  max-width: 486px;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 14px;
   line-height: 1.28571;
   letter-spacing: -0.02em;
+  margin-bottom: 50px;
 }
 .ingredients-list-title {
   font-weight: 600;
@@ -117,22 +227,45 @@ body {
   letter-spacing: -0.02em;
   text-transform: uppercase;
   text-align: left;
+  margin-top: 36px;
+}
+.ingredients-list {
+  display: flex;
+  gap: 19px;
+  flex-wrap: wrap;
+}
+.ingredients-list-item {
+  width: calc((100% - 3 * 19px) / 4);
+  padding: 28px 32px;
+  border-radius: 15px;
+  border: 1px solid #fd9222;
+}
+.ingredients-list-image {
+  margin-bottom: 36px;
+}
+.ingredients-list-item:nth-child(4n + 1) {
+  background: #fd9222;
+  color: #fff;
+}
+.ingredients-list-item:nth-child(4n + 3) {
+  background: #1e1823;
+  color: #fff;
+  border-color: #1e1823;
+}
+.ingredients-list-item:nth-child(even) {
+  background: #fff;
 }
 /*======= /Ingredients Styles =======*/
 /*======= How Made Styles =======*/
-
-.section-title {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 1.17;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  text-align: center;
+.how-made {
+  padding-top: 50px;
 }
 .how-made-title {
   font-weight: 600;
   font-size: 18px;
   line-height: 1.33333;
+  max-width: 350px;
+  margin-bottom: 28px;
 }
 .how-made-list-item {
   font-weight: 400;
@@ -140,14 +273,37 @@ body {
   line-height: 1.28571;
   letter-spacing: -0.02em;
 }
+.how-made-content-wrapper {
+  display: flex;
+  gap: 20px;
+}
+.how-made-text-wrapper {
+  flex-grow: 1;
+  padding: 32px;
+  background: #fff;
+  border-radius: 15px;
+}
+.how-made-img {
+  border-radius: 15px;
+}
+.how-made-list-item:not(:last-child) {
+  margin-bottom: 24px;
+}
+
 /*======= /How Made Styles =======*/
 
 /*======= Reviews Styles =======*/
+.reviews {
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
 .reviews-list-fullname {
   font-weight: 600;
   font-size: 18px;
   line-height: 1.33333;
   text-align: center;
+  margin-bottom: 24px;
 }
 .reviews-list-text {
   font-weight: 400;
@@ -156,10 +312,33 @@ body {
   letter-spacing: -0.02em;
   text-align: center;
   color: rgba(17, 17, 17, 0.7);
+  margin-bottom: 24px;
 }
 .leave-review-btn {
   font-weight: 600;
   font-size: 18px;
+}
+.reviews-list {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.reviews-list-item {
+  width: calc((100% - 56px) / 3);
+  padding-top: 54px;
+  padding-right: 24px;
+  padding-left: 24px;
+  padding-bottom: 24px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 9px 100px 0 rgba(17, 17, 17, 0.03);
+  background: #fff;
+}
+.reviews-list-item-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 18px;
 }
 /*======= /Reviews Styles =======*/
 /*======= Footer Styles =======*/
